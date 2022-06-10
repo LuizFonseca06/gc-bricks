@@ -1,5 +1,3 @@
-# %%
-
 import boto3
 import pandas as pd
 import sqlalchemy
@@ -16,6 +14,5 @@ con = sqlalchemy.create_engine("sqlite:///../data/full_load/gc.db")
 tables = con.table_names()
 s3_client = boto3.client('s3')
 
-# %%
 for t in tqdm(tables):
     save_s3(t, con, s3_client)
